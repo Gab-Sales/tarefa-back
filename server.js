@@ -53,7 +53,7 @@ app.post('/CriarThread',(req,res)=>{
 
 app.post('/ResponderThread',(req,res)=>{
     const val = req.body;
-    mysqlConnection.query('insert into threadreplies (thread,resposta,nome) values(?,?,?)',[val.thread,val.resposta,val.nome],(err,rows,fields)=>{
+    mysqlConnection.query('insert into threadreplies (thread,resposta,nome,dataresp) values(?,?,?,?)',[val.thread,val.resposta,val.nome,new Date()],(err,rows,fields)=>{
         if(!err){
             res.send({mensagem:'inserido com sucesso!'});
         }else{    
