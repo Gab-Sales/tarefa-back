@@ -17,7 +17,7 @@ mysqlConnection.connect(function(err){
     console.log('connected as id'+mysqlConnection.threadId); 
 });
 
-app.listen(3333,()=>console.log('express rodando na porta 3333'));
+app.listen(process.env.PORT || 3000);
 
 app.get('/ListarThreads',(req,res)=>{
     mysqlConnection.query('SELECT *,(SELECT COUNT(*) FROM threadreplies t2 WHERE t2.thread = t1.Codigo) AS respostas FROM thread t1;',(err,rows,fields)=>{
