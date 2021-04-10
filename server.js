@@ -64,7 +64,7 @@ app.post('/ResponderThread',(req,res)=>{
 
 app.get('/RespostasThread/:codigo',(req,res)=>{
     const val = req.params.codigo;
-    mysqlConnection.query('SELECT * FROM threadreplies  where thread = ?;',req.params.codigo,(err,rows,fields)=>{
+    mysqlConnection.query('SELECT *,date_format(dataresp,"%d/%m/%y") as dataformatada FROM threadreplies  where thread = ?;',req.params.codigo,(err,rows,fields)=>{
         if(!err){
             res.send(rows);
         }else{    
