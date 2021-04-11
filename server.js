@@ -76,7 +76,7 @@ app.get('/RespostasThread/:codigo/:page',(req,res)=>{
         if(!err){
             const pages = Math.ceil(rows[0].tam/20)
             const pagepesq = req.params.page;
-            mysqlConnection.query('SELECT * FROM threadreplies WHERE thread = ? LIMIT 20 offset ?;',[req.params.codigo,(pagepesq*20)-20],(err,rows,fields)=>{
+            mysqlConnection.query('SELECT *,date_format(dataresp,"%d/%m/%y") as dataformatada FROM threadreplies WHERE thread = ? LIMIT 20 offset ?;',[req.params.codigo,(pagepesq*20)-20],(err,rows,fields)=>{
                 if(!err){
                     const ret = [{dados:rows,paginate:pages}]
                     res.send(ret);                    
