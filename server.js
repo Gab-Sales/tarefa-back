@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const app = express();
 
-app.use(express.json());
+app.use(exsssspress.json());
 app.use(cors())
 
 const mysqlConnection = mysql.createConnection("mysql://be2d68396299c6:ce2b94d2@us-cdbr-east-03.cleardb.com/heroku_e798ae2abab01cb?reconnect=true");
